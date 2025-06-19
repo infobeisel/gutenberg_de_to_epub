@@ -18,6 +18,7 @@ for file in *.html; do
     if [[ "$file" != "index.html" && -f "$file" ]]; then
         sed -i '/<div class="navi-gb">/,/weiter&nbsp;&gt;&gt;<\/a>&nbsp;<\/hr>/d' $file
         sed -i '/<hr size="1" color="#808080">&nbsp/,/<\/div>/d' $file
+        sed -i 's/..\/..\///g' $file
     elif [[ "$file" == "index.html" && -f "$file"  ]]; then
         echo filename:
         echo $file
