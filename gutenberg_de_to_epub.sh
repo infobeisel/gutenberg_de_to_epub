@@ -23,9 +23,9 @@ for file in *.html; do
         #delete content table (if not titlepage)
         if [[ "$file" != "titlepage.html" && -f "$file" ]]; then
             # Get line number of first prefix occurrence
-            start_line=$(grep -n '<p><h5></h5>' "$file" | head -n1 | cut -d: -f1)
+            start_line=$(grep -n '<p><h5>' "$file" | head -n1 | cut -d: -f1)
             # Get line number of last suffix occurrence after start_line
-            end_line=$(tail -n +"$start_line" "$file" | grep -n 'Autorenseite</a><br/><hr size' | tail -n1 | cut -d: -f1)
+            end_line=$(tail -n +"$start_line" "$file" | grep -n '../../autoren/namen' | tail -n1 | cut -d: -f1)
             # Calculate actual line number of suffix in full file
             if [[ -n $end_line ]]; then
             end_line=$((start_line + end_line - 1))
